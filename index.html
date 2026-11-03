@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Esta Support</title>
+<meta name="description" content="Esta Support: administratieve ondersteuning voor ondernemers in Zuid-Limburg en daarbuiten.">
+<meta name="color-scheme" content="only light">
+<style>
+@font-face { font-family: "Lora"; src: url("fonts/Lora-Variable.ttf") format("truetype"); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("fonts/Lora-Italic-Variable.ttf") format("truetype"); font-weight: 400 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Bold.ttf") format("truetype"); font-weight: 600; font-display: swap; }
+body{margin:0}
+
+/* Layout: één kolom met rustige banden; crème als ruimte, espresso voor tekst, terracotta als accent (huisstijl Esta Support) */
+:root {
+  --bg: #F5EEDF;        /* crème */
+  --surface: #FFFDF8;   /* kaarten */
+  --band: #EDE3CF;      /* zand, lichter */
+  --fg: #3B2F2A;        /* espresso */
+  --muted: #625A52;     /* warm grijs: minimaal 4,5:1 op alle lichte vlakken (WCAG AA) */
+  --accent: #C1653C;    /* terracotta: logo, koppen */
+  --accent-text: #944826; /* terracotta donker: links, knoppen, labels (min. 5,1:1) */
+  --on-accent: #FFFFFF;
+  --mark-fg: #F5EEDF;
+  --sage: #66755A;      /* salie donker: vinkjes, 4,8:1 */
+  --accent-on-dark: #E8A383; /* terracotta licht op espresso: 6,1:1 */
+  --line: #DCCFB8;
+  --dark-band: #3B2F2A;
+  --dark-band-fg: #F5EEDF;
+  --display: "Lora", Georgia, "Times New Roman", serif;
+  --body: "Poppins", Arial, "Helvetica Neue", sans-serif;
+  --radius: 14px;
+  --maxw: 1080px;
+  color-scheme: only light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.65; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0; }
+a { color: var(--accent-text); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.label { font-size: .75rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 60ch; }
+
+/* header */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.logo { height: 44px; width: auto; display: block; }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; font-size: .92rem; }
+nav a { color: var(--fg); text-decoration: none; }
+nav a:hover { color: var(--accent-text); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-family: var(--body); font-weight: 500; font-size: .95rem; text-decoration: none; border: 2px solid var(--accent-text); cursor: pointer; }
+.btn.primary { background: var(--accent-text); color: var(--on-accent); }
+.btn.primary:hover { background: var(--fg); border-color: var(--fg); }
+.btn.ghost { background: transparent; color: var(--accent-text); }
+.nav-cta { padding: 8px 16px; font-size: .88rem; }
+@media (max-width: 760px) { nav { display: none; } }
+
+section { padding-block: clamp(56px, 8vw, 96px); }
+.band { background: var(--band); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: center; }
+.hero h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.hero-copy { display: grid; gap: 22px; min-width: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .9rem; color: var(--muted); }
+.facts span::before { content: "•"; color: var(--accent); margin-right: 8px; }
+.hero-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 16px; min-width: 0; }
+.hero-card .mark { width: 56px; height: 56px; }
+.hero-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.hero-card li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: .95rem; }
+.tick { color: var(--sage); font-weight: 600; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+/* diensten */
+.section-head { display: grid; gap: 12px; margin-bottom: 36px; max-width: 70ch; }
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.service { padding: 26px 24px 28px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
+.service:not(:nth-child(3n)) { border-right: 1px solid var(--line); }
+.service:not(:nth-child(3n+1)) { padding-left: 24px; }
+.service p { color: var(--muted); font-size: .95rem; }
+.service svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 860px) {
+  .services { grid-template-columns: 1fr 1fr; }
+  .service, .service:not(:nth-child(3n+1)) { padding: 22px 18px 22px 0; border-right: none; }
+  .service:nth-child(odd) { border-right: 1px solid var(--line); }
+  .service:nth-child(even) { padding-left: 18px; }
+}
+@media (max-width: 560px) {
+  .services { grid-template-columns: 1fr; }
+  .service, .service:nth-child(even) { padding: 20px 0; border-right: none !important; }
+}
+.for-who { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+.for-who > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; display: grid; gap: 6px; }
+.for-who p { color: var(--muted); font-size: .95rem; }
+@media (max-width: 700px) { .for-who { grid-template-columns: 1fr; } }
+
+/* bundels */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; display: grid; grid-template-rows: auto auto auto 1fr; gap: 14px; }
+.plan.featured { border: 2px solid var(--accent); }
+.plan .tag { justify-self: start; font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--on-accent); background: var(--accent-text); padding: 4px 10px; border-radius: 999px; }
+.plan .tag.quiet { background: transparent; color: var(--muted); padding: 4px 0; }
+.price { font-family: var(--display); font-size: 2.2rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.price small { margin-left: 4px; }
+.price small { font-family: var(--body); font-size: .85rem; font-weight: 400; color: var(--muted); }
+.hours { font-size: .95rem; color: var(--muted); }
+.hours strong { color: var(--fg); font-weight: 600; }
+.plan-cta { justify-self: start; align-self: end; margin-top: 6px; }
+.plan { grid-template-rows: auto auto auto 1fr auto !important; }
+.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: .93rem; align-content: start; }
+.plan li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+.plans-foot { margin-top: 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: center; background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 20px 24px; }
+.plans-foot p { color: var(--muted); font-size: .95rem; }
+.plans-note { margin-top: 14px; font-size: .85rem; color: var(--muted); }
+@media (max-width: 900px) { .plans { grid-template-columns: 1fr; } .plans-foot { grid-template-columns: 1fr; } }
+
+/* advies */
+.advice { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start; }
+.advice-copy { display: grid; gap: 16px; min-width: 0; }
+.advice-copy p { color: var(--muted); }
+.table-wrap { overflow-x: auto; min-width: 0; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: 14px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+td small { display: block; color: var(--muted); font-size: .85rem; }
+@media (max-width: 860px) { .advice { grid-template-columns: 1fr; gap: 28px; } }
+
+/* werkwijze */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; counter-reset: step; }
+.steps li { display: grid; gap: 10px; align-content: start; counter-increment: step; border-top: 2px solid var(--accent); padding-top: 18px; }
+.steps li::before { content: "Stap " counter(step); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); font-weight: 500; }
+.steps p { color: var(--muted); font-size: .95rem; }
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* over mij */
+.about { background: var(--dark-band); color: var(--dark-band-fg); }
+.about .wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
+.portrait { margin: 0; width: 220px; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 18px; overflow: hidden; background: var(--accent); display: grid; place-items: center; box-shadow: 0 0 0 6px color-mix(in srgb, var(--dark-band-fg) 10%, transparent); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait-ph { display: grid; place-items: center; width: 100%; height: 100%; }
+.portrait .mark { width: 62%; height: auto; }
+.quote { margin: 8px 0 0; display: grid; gap: 8px; }
+.quote figcaption { font-size: .85rem; color: #D8CDBD; }
+.about-copy { display: grid; gap: 16px; max-width: 68ch; min-width: 0; }
+.about .label { color: var(--accent-on-dark); }
+.about blockquote { margin: 8px 0 0; font-family: var(--display); font-style: italic; font-size: 1.35rem; line-height: 1.4; color: var(--accent-on-dark); }
+.traits { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.traits li { border: 1px solid color-mix(in srgb, var(--dark-band-fg) 35%, transparent); border-radius: 999px; padding: 5px 14px; font-size: .88rem; }
+.refs { display: grid; gap: 10px; background: color-mix(in srgb, var(--dark-band-fg) 7%, transparent); border-radius: var(--radius); padding: 20px 22px; margin-top: 6px; }
+.refs p { color: var(--dark-band-fg); font-size: .95rem; }
+.btn.on-dark { justify-self: start; color: var(--accent-on-dark); border-color: var(--accent-on-dark); }
+.about a:focus-visible { outline-color: var(--accent-on-dark); }
+@media (max-width: 700px) { .about .wrap { grid-template-columns: 1fr; gap: 24px; } .portrait { width: 160px; } }
+
+/* faq */
+.faq { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 40px; }
+details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+summary { cursor: pointer; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent-text); font-weight: 600; font-size: 1.2rem; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+@media (max-width: 760px) { .faq { grid-template-columns: 1fr; } }
+
+/* contact */
+.contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact-copy { display: grid; gap: 18px; min-width: 0; }
+.contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; min-width: 0; }
+.row { display: grid; gap: 4px; }
+.row .k { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.row .v { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 1.15rem; font-weight: 500; word-break: break-word; }
+.copy { font: 500 .8rem var(--body); color: var(--accent-text); background: transparent; border: 1px solid var(--accent-text); border-radius: 999px; min-height: 32px; padding: 4px 14px; cursor: pointer; }
+.copy:hover { border-color: var(--accent-text); }
+.promise { padding: 16px 18px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; color: var(--muted); }
+.promise strong { color: var(--fg); }
+.hours-list { margin: 0; padding: 0; list-style: none; font-size: .95rem; display: grid; gap: 4px; }
+.hours-list li { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px dotted var(--line); padding-bottom: 4px; }
+.hours-list span:last-child { font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; gap: 28px; } }
+
+
+/* toegankelijkheid */
+.skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; }
+.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+#inhoud:focus { outline: none; }
+nav ul a[aria-current="true"] { color: var(--accent-text); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+/* mobiel menu: zwevende dock onderin, bereikbaar met de duim */
+.dock { display: none; }
+@media (max-width: 760px) {
+  body { padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  html { scroll-padding-bottom: 100px; }
+  .dock { display: block; position: fixed; z-index: 20; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--fg); border: 1px solid color-mix(in srgb, var(--bg) 22%, transparent); border-radius: 22px; padding: 6px; box-shadow: 0 12px 30px -10px rgba(59,47,42,.55); animation: dock-in .5s ease-out both; }
+  .dock ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; }
+  .dock a { display: grid; justify-items: center; gap: 3px; padding: 8px 2px 7px; border-radius: 16px; color: var(--bg); text-decoration: none; font-size: .7rem; font-weight: 500; line-height: 1.1; min-height: 52px; transition: background-color .2s ease, color .2s ease; }
+  .dock svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .dock span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+  .dock a[aria-current="true"] { background: var(--bg); color: var(--accent-text); }
+  .dock a:focus-visible { outline: 3px solid var(--accent-on-dark); outline-offset: 1px; }
+}
+@keyframes dock-in { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .dock { animation: none; } .dock a { transition: none; } }
+
+/* privacyverklaring */
+.privacy { padding-block: 32px; border-top: 1px solid var(--line); }
+.privacy summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; cursor: pointer; list-style: none; }
+.privacy summary::-webkit-details-marker { display: none; }
+.privacy summary::after { content: "+"; color: var(--accent-text); font-weight: 600; font-size: 1.2rem; margin-left: auto; }
+.privacy details[open] summary::after { content: "–"; }
+.privacy .ptitle { font-family: var(--display); font-size: 1.15rem; font-weight: 600; }
+.pbody { display: grid; gap: 10px; max-width: 72ch; margin-top: 18px; font-size: .95rem; }
+.pbody h3 { font-size: 1.05rem; margin-top: 8px; }
+.pbody p, .pbody li { color: var(--muted); }
+.pbody ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.pmeta { font-size: .8rem; }
+footer a.plink { color: var(--accent-text); }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: .85rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+</style>
+</head>
+<body>
+
+
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<header class="top">
+  <div class="wrap">
+    <a href="#top" aria-label="Esta Support, naar boven"><svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esta Support" class="logo" viewBox="0 0 444 198">
+<rect x="24" y="24" width="150" height="150" rx="33.0" style="fill:var(--accent)"/>
+<path d="M100.4145 121.218Q91.5585 121.218 84.6705 117.2205Q77.7825 113.223 73.9695 105.9045Q70.1565 98.586 70.1565 88.623Q70.1565 80.013 73.9695 72.51Q77.7825 65.007 84.732 60.39450000000001Q91.6815 55.78200000000001 100.9065 55.78200000000001Q106.07249999999999 55.78200000000001 110.86949999999999 57.25800000000001Q115.66649999999998 58.73400000000001 119.47949999999999 62.17800000000001Q123.29249999999999 65.62200000000001 125.56799999999998 71.28Q127.84349999999999 76.938 127.72049999999999 85.05600000000001L86.3925 85.79400000000001Q86.3925 93.42 88.17599999999999 99.2625Q89.95949999999999 105.105 94.01849999999999 108.48750000000001Q98.0775 111.87 104.7195 111.87Q107.6715 111.87 111.054 110.8245Q114.4365 109.779 117.7575 107.6265Q121.07849999999999 105.474 123.66149999999999 102.27600000000001L128.3355 106.581Q124.2765 112.485 119.3565 115.68299999999999Q114.4365 118.881 109.5165 120.0495Q104.59649999999999 121.218 100.4145 121.218ZM87.0075 78.41400000000002H112.5915Q112.4685 73.494 111.17699999999999 70.1115Q109.8855 66.72900000000001 107.4255 64.94550000000001Q104.96549999999999 63.162000000000006 101.3985 63.162000000000006Q95.3715 63.162000000000006 91.743 67.15950000000001Q88.11449999999999 71.15700000000001 87.0075 78.41400000000002Z" style="fill:var(--mark-fg)"/>
+<path d="M233.472 117.792Q225.40800000000002 117.792 219.13600000000002 114.152Q212.864 110.512 209.392 103.848Q205.92 97.184 205.92 88.112Q205.92 80.27199999999999 209.392 73.44Q212.864 66.608 219.192 62.408Q225.52 58.208 233.92000000000002 58.208Q238.624 58.208 242.99200000000002 59.552Q247.36 60.896 250.832 64.03200000000001Q254.304 67.168 256.376 72.32000000000001Q258.448 77.47200000000001 258.336 84.864L220.704 85.536Q220.704 92.48 222.328 97.80000000000001Q223.952 103.12 227.648 106.2Q231.344 109.28 237.392 109.28Q240.07999999999998 109.28 243.16 108.328Q246.24 107.376 249.264 105.416Q252.288 103.456 254.64 100.544L258.896 104.464Q255.2 109.84 250.72 112.75200000000001Q246.24 115.664 241.76 116.72800000000001Q237.28 117.792 233.472 117.792ZM221.264 78.816H244.56Q244.448 74.336 243.272 71.256Q242.096 68.176 239.856 66.55199999999999Q237.61599999999999 64.928 234.368 64.928Q228.88 64.928 225.576 68.568Q222.272 72.208 221.264 78.816ZM291.936 117.792Q286.784 117.792 282.304 116.44800000000001Q277.824 115.104 275.13599999999997 113.2L275.472 116.784H268.192L267.632 97.52H273.68Q274.016 101.328 276.368 104.408Q278.71999999999997 107.488 282.472 109.22399999999999Q286.224 110.96 290.816 110.96Q293.056 110.96 295.128 110.288Q297.2 109.616 298.6 108.104Q300.0 106.592 300.0 104.24Q300.0 101.776 298.376 100.208Q296.752 98.64 293.84000000000003 97.29599999999999Q290.928 95.952 287.008 94.496Q283.536 93.152 280.06399999999996 91.696Q276.592 90.24 273.67999999999995 88.168Q270.768 86.096 268.976 83.072Q267.18399999999997 80.048 267.18399999999997 75.68Q267.18399999999997 72.656 268.304 69.632Q269.424 66.608 271.888 63.976Q274.352 61.344 278.216 59.775999999999996Q282.08 58.208 287.68 58.208Q290.704 58.208 294.512 59.16Q298.32 60.112 301.23199999999997 62.352L301.12 58.768H308.4V78.47999999999999H302.352Q301.792 74.56 299.888 71.48Q297.984 68.4 294.84799999999996 66.608Q291.712 64.816 287.344 64.816Q283.76 64.816 281.296 66.55199999999999Q278.832 68.288 278.832 71.648Q278.832 74.44800000000001 280.736 76.24000000000001Q282.64 78.032 285.888 79.26400000000001Q289.13599999999997 80.49600000000001 292.944 81.952Q298.20799999999997 83.744 302.52 86.208Q306.832 88.672 309.408 92.144Q311.984 95.616 311.984 100.768Q311.984 106.592 309.072 110.344Q306.15999999999997 114.096 301.568 115.944Q296.976 117.792 291.936 117.792ZM342.448 117.792Q339.312 117.792 336.344 117.00800000000001Q333.376 116.224 330.96799999999996 114.096Q328.56 111.968 327.10400000000004 107.768Q325.648 103.568 325.648 96.624L325.872 67.72800000000001L317.92 67.84V60.0Q321.28 59.888 324.416 57.70399999999999Q327.552 55.519999999999996 329.904 51.936Q332.256 48.352000000000004 333.04 44.31999999999999H339.872L339.76 60.0H355.552V67.168L339.76 67.50399999999999L339.648 96.288Q339.648 99.648 340.264 102.50399999999999Q340.88 105.36 342.504 107.03999999999999Q344.128 108.72 346.928 108.72Q349.056 108.72 351.79999999999995 107.376Q354.544 106.032 357.344 102.0L361.936 106.144Q359.13599999999997 110.4 356.168 112.75200000000001Q353.2 115.104 350.456 116.22399999999999Q347.712 117.344 345.584 117.568Q343.456 117.792 342.448 117.792ZM398.0 116.0Q397.664 114.32 397.60799999999995 113.144Q397.55199999999996 111.968 397.44 110.4Q393.632 114.208 389.32 116.0Q385.008 117.792 380.416 117.792Q372.8 117.792 368.712 113.648Q364.62399999999997 109.504 364.62399999999997 103.456Q364.62399999999997 98.08 367.53599999999994 94.328Q370.448 90.576 375.152 88.16799999999999Q379.856 85.75999999999999 385.568 84.472Q391.28 83.184 396.88 83.072V76.912Q396.88 73.664 396.152 70.92Q395.424 68.176 393.52 66.55199999999999Q391.616 64.928 387.91999999999996 64.928Q385.456 65.03999999999999 382.93600000000004 65.99199999999999Q380.416 66.94399999999999 378.96 68.96000000000001Q379.856 69.96799999999999 380.08 71.14399999999999Q380.304 72.32 380.304 73.21600000000001Q380.304 75.232 378.736 77.416Q377.168 79.6 373.69599999999997 79.488Q370.67199999999997 79.376 369.048 77.36Q367.424 75.344 367.424 72.544Q367.424 68.288 370.504 65.096Q373.584 61.903999999999996 378.84799999999996 60.056Q384.11199999999997 58.208 390.608 58.208Q400.24 58.208 405.392 63.248Q410.544 68.288 410.432 79.376Q410.432 83.29599999999999 410.432 86.488Q410.432 89.68 410.376 92.872Q410.32 96.064 410.32 99.984Q410.32 101.664 410.20799999999997 104.184Q410.096 106.70400000000001 409.87199999999996 109.168Q411.888 108.944 413.96 108.888Q416.032 108.832 417.376 108.72V116.0ZM396.768 89.68Q393.408 89.904 390.15999999999997 90.744Q386.912 91.584 384.336 93.03999999999999Q381.76 94.496 380.248 96.68Q378.736 98.864 378.848 101.664Q378.96 105.136 381.08799999999997 106.75999999999999Q383.216 108.384 386.01599999999996 108.384Q389.264 108.384 391.89599999999996 107.03999999999999Q394.52799999999996 105.696 396.768 103.456Q396.768 102.336 396.768 101.104Q396.768 99.872 396.768 98.64Q396.768 97.072 396.768 94.72Q396.768 92.368 396.768 89.68Z" style="fill:var(--accent)"/>
+<path d="M208.276 153.776H210.96Q211.048 154.766 211.74099999999999 155.404Q212.434 156.042 213.688 156.042Q214.986 156.042 215.712 155.41500000000002Q216.438 154.788 216.438 153.798Q216.438 153.028 215.987 152.54399999999998Q215.536 152.06 214.865 151.796Q214.194 151.532 213.006 151.224Q211.51 150.828 210.575 150.421Q209.64 150.014 208.98 149.156Q208.32 148.298 208.32 146.868Q208.32 145.548 208.98 144.558Q209.64 143.568 210.82799999999997 143.04000000000002Q212.016 142.512 213.578 142.512Q215.8 142.512 217.219 143.623Q218.638 144.734 218.792 146.67H216.02Q215.954 145.834 215.228 145.24Q214.502 144.64600000000002 213.314 144.64600000000002Q212.236 144.64600000000002 211.554 145.19600000000003Q210.872 145.746 210.872 146.78Q210.872 147.484 211.301 147.935Q211.73 148.386 212.39 148.64999999999998Q213.05 148.914 214.194 149.222Q215.712 149.64 216.66899999999998 150.058Q217.626 150.476 218.297 151.345Q218.968 152.214 218.968 153.666Q218.968 154.832 218.341 155.86599999999999Q217.714 156.9 216.515 157.527Q215.316 158.154 213.688 158.154Q212.148 158.154 210.916 157.615Q209.684 157.076 208.98000000000002 156.086Q208.276 155.096 208.276 153.776ZM233.664 142.71V152.456Q233.664 154.194 234.577 155.074Q235.48999999999998 155.954 237.118 155.954Q238.768 155.954 239.68099999999998 155.074Q240.594 154.194 240.594 152.456V142.71H243.102V152.412Q243.102 154.282 242.288 155.57999999999998Q241.474 156.878 240.10999999999999 157.516Q238.74599999999998 158.154 237.096 158.154Q235.446 158.154 234.093 157.516Q232.73999999999998 156.878 231.94799999999998 155.57999999999998Q231.15599999999998 154.282 231.15599999999998 152.412V142.71ZM260.878 151.796H258.106V158.0H255.59799999999998V142.71H260.878Q262.638 142.71 263.859 143.315Q265.08 143.92000000000002 265.68499999999995 144.954Q266.28999999999996 145.988 266.28999999999996 147.264Q266.28999999999996 148.43 265.74 149.464Q265.19 150.498 263.98 151.147Q262.77 151.796 260.878 151.796ZM263.71599999999995 147.264Q263.71599999999995 144.756 260.878 144.756H258.106V149.75H260.878Q262.308 149.75 263.01199999999994 149.101Q263.71599999999995 148.452 263.71599999999995 147.264ZM283.20799999999997 151.796H280.436V158.0H277.92799999999994V142.71H283.20799999999997Q284.96799999999996 142.71 286.18899999999996 143.315Q287.40999999999997 143.92000000000002 288.015 144.954Q288.61999999999995 145.988 288.61999999999995 147.264Q288.61999999999995 148.43 288.06999999999994 149.464Q287.52 150.498 286.30999999999995 151.147Q285.09999999999997 151.796 283.20799999999997 151.796ZM286.04599999999994 147.264Q286.04599999999994 144.756 283.20799999999997 144.756H280.436V149.75H283.20799999999997Q284.638 149.75 285.342 149.101Q286.04599999999994 148.452 286.04599999999994 147.264ZM299.42199999999997 150.322Q299.42199999999997 148.078 300.467 146.296Q301.51199999999994 144.514 303.30499999999995 143.513Q305.09799999999996 142.512 307.23199999999997 142.512Q309.3879999999999 142.512 311.1809999999999 143.513Q312.97399999999993 144.514 314.0079999999999 146.296Q315.0419999999999 148.078 315.0419999999999 150.322Q315.0419999999999 152.566 314.0079999999999 154.35899999999998Q312.97399999999993 156.152 311.1809999999999 157.153Q309.3879999999999 158.154 307.23199999999997 158.154Q305.09799999999996 158.154 303.30499999999995 157.153Q301.51199999999994 156.152 300.467 154.35899999999998Q299.42199999999997 152.566 299.42199999999997 150.322ZM312.46799999999996 150.322Q312.46799999999996 148.628 311.7969999999999 147.35199999999998Q311.1259999999999 146.076 309.93799999999993 145.394Q308.74999999999994 144.712 307.23199999999997 144.712Q305.71399999999994 144.712 304.52599999999995 145.394Q303.33799999999997 146.076 302.6669999999999 147.35199999999998Q301.9959999999999 148.628 301.9959999999999 150.322Q301.9959999999999 152.016 302.6669999999999 153.303Q303.33799999999997 154.59 304.52599999999995 155.28300000000002Q305.71399999999994 155.976 307.23199999999997 155.976Q308.74999999999994 155.976 309.93799999999993 155.28300000000002Q311.1259999999999 154.59 311.7969999999999 153.303Q312.46799999999996 152.016 312.46799999999996 150.322ZM334.68799999999993 158.0 331.16799999999995 151.88400000000001H329.25399999999996V158.0H326.7459999999999V142.71H332.02599999999995Q333.78599999999994 142.71 335.00699999999995 143.32600000000002Q336.22799999999995 143.942 336.83299999999997 144.976Q337.43799999999993 146.01 337.43799999999993 147.286Q337.43799999999993 148.782 336.56899999999996 150.003Q335.69999999999993 151.224 333.89599999999996 151.664L337.67999999999995 158.0ZM329.25399999999996 149.882H332.02599999999995Q333.43399999999997 149.882 334.14899999999994 149.178Q334.8639999999999 148.474 334.8639999999999 147.286Q334.8639999999999 146.098 334.15999999999997 145.42700000000002Q333.45599999999996 144.756 332.02599999999995 144.756H329.25399999999996ZM359.768 142.71V144.756H355.698V158.0H353.18999999999994V144.756H349.09799999999996V142.71Z" style="fill:var(--fg)"/>
+</svg></a>
+    <nav aria-label="Hoofdmenu">
+      <ul>
+        <li><a href="#diensten" data-spy="diensten">Diensten</a></li>
+        <li><a href="#bundels" data-spy="bundels">Bundels</a></li>
+        <li><a href="#advies" data-spy="advies">Horeca-advies</a></li>
+        <li><a href="#werkwijze" data-spy="werkwijze">Werkwijze</a></li>
+        <li><a href="#over" data-spy="over">Over mij</a></li>
+      </ul>
+    </nav>
+    <a class="btn primary nav-cta" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+<span id="inhoud" tabindex="-1"></span>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="label">Administratieve ondersteuning voor ondernemers <span style="white-space:nowrap">· Zuid-Limburg</span></p>
+        <h1>U runt uw zaak. <em>Wij regelen de rest.</em></h1>
+        <p class="lead">Wij nemen het werk naast uw vak uit handen: mail, roosters, offertes en facturen, personeelsadministratie en social media. Op afstand, per maand, met één vast aanspreekpunt dat weet hoe een bedrijf met personeel in de praktijk draait.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Plan een kennismaking</a>
+          <a class="btn ghost" href="#bundels">Bekijk de bundels</a>
+        </div>
+        <div class="facts"><span>Betrouwbare assistent met ervaring in verschillende sectoren</span><span>Vanaf 5 uur per week</span><span>Maandelijks opzegbaar</span></div>
+      </div>
+      <aside class="hero-card" aria-label="Wat wij bieden">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="mark" viewBox="0 0 512 512">
+<rect x="0" y="0" width="512" height="512" rx="112.6" style="fill:var(--accent)"/>
+<path d="M260.82815999999997 331.83744Q230.59967999999998 331.83744 207.08864 318.19264Q183.5776 304.54784 170.56256 279.56736Q157.54752 254.58688 157.54752 220.57984Q157.54752 191.19104000000002 170.56256 165.5808Q183.5776 139.97056 207.29856 124.22656Q231.01952 108.48256 262.50752 108.48256Q280.1408 108.48256 296.51456 113.52064000000001Q312.88832 118.55872000000002 325.90336 130.31424Q338.9184 142.06976 346.68543999999997 161.38240000000002Q354.45248 180.69504 354.03264 208.40448L212.9664 210.92352Q212.9664 236.9536 219.05408 256.89599999999996Q225.14175999999998 276.8384 238.99648 288.384Q252.8512 299.9296 275.52256 299.9296Q285.59871999999996 299.9296 297.14432 296.36096Q308.68992 292.79232 320.02559999999994 285.44512Q331.36127999999997 278.09792 340.17792 267.18208L356.13184 281.87648Q342.27711999999997 302.0288 325.48352 312.94464Q308.68992 323.86048 291.89631999999995 327.84896000000003Q275.10272 331.83744 260.82815999999997 331.83744ZM215.0656 185.73312H302.39232Q301.97248 168.93952000000002 297.56416 157.39392Q293.15584 145.84832 284.75904 139.76064000000002Q276.36224 133.67296000000002 264.18688 133.67296000000002Q243.61471999999998 133.67296000000002 231.22943999999998 147.31776000000002Q218.84416 160.96256 215.0656 185.73312Z" style="fill:var(--mark-fg)"/>
+</svg>
+        <h3>Wat wij bieden</h3>
+        <ul>
+          <li><span class="tick">✓</span><span>Eén vast aanspreekpunt, geen wisselend team</span></li>
+          <li><span class="tick">✓</span><span>Reactie binnen één werkdag, met een flexibele werkplanning</span></li>
+          <li><span class="tick">✓</span><span>Elke maand een overzicht van de uren en het werk</span></li>
+          <li><span class="tick">✓</span><span>Zorgvuldig met uw gegevens, vastgelegd in een verwerkersovereenkomst</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="diensten" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Diensten</p>
+        <h2>Het werk dat blijft liggen, pakken wij op</h2>
+        <p class="lead">U staat zelf op de vloer, bij de klant of in de werkplaats. Ondertussen loopt de administratie op. Deze taken nemen wij van u over.</p>
+      </div>
+      <div class="services">
+        <div class="service">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+          <h3>Mailbeheer</h3>
+          <p>Wij houden uw inbox bij, beantwoorden mail namens u, plannen afspraken in en zorgen dat niets blijft liggen.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 3v3M16 3v3M7.5 13.5h3M13.5 13.5h3M7.5 17h3"/></svg>
+          <h3>Roosterplanning</h3>
+          <p>Roosters maken en bijwerken binnen de cao, contracturen en uw budget. Ook ruilverzoeken en last-minute wijzigingen verwerken wij.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 15.5h5M10 8.5h2"/></svg>
+          <h3>Offertes en facturen</h3>
+          <p>Offertes opstellen en opvolgen, facturen versturen, betalingen bewaken en alles klaarzetten voor uw boekhouder.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3 2.8-5 5.5-5s4.9 2 5.5 5M15.5 7h5M15.5 10.5h5M17 14h3.5"/></svg>
+          <h3>Personeelsadministratie</h3>
+          <p>Personeelsdossiers compleet en actueel: contracten, gegevens, verlof en verloopdata.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17" cy="7" r=".6"/></svg>
+          <h3>Social media beheer</h3>
+          <p>Berichten plannen en plaatsen, reacties en reviews beantwoorden, en uw kanalen actueel houden.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M4 20l4-1 10.5-10.5a2.1 2.1 0 00-3-3L5 16z"/><path d="M13.5 7.5l3 3"/></svg>
+          <h3>Content maken</h3>
+          <p>Teksten en eenvoudige beelden voor social media, nieuwsbrieven, menukaarten of vacatures, in uw eigen huisstijl.</p>
+        </div>
+      </div>
+      <div class="for-who">
+        <div>
+          <h3>Horeca</h3>
+          <p>Hier ligt onze basis. Roosters, inkoop, personeel en gasten: u hoeft ons niets uit te leggen.</p>
+        </div>
+        <div>
+          <h3>Kleine bedrijven en zzp'ers</h3>
+          <p>Ook buiten de horeca ondersteunen wij ondernemers met personeel, klanten en administratie, in Zuid-Limburg en daarbuiten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bundels">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Bundels</p>
+        <h2>Kies het aantal uren dat bij u past</h2>
+        <p class="lead">U kiest een vast aantal uren per week. Wij verdelen die uren over de maand, zodat het werk doorloopt, en elke maand ontvangt u een overzicht van het uitgevoerde werk. Na een kort kennismakingsgesprek ontvangt u een offerte op maat.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <span class="tag quiet">Basis</span>
+          <div class="price">5 uur <small>per week</small></div>
+          <p class="hours">Ongeveer <strong>20 uur</strong> per maand</p>
+          <ul>
+            <li><span class="tick">✓</span><span>Voor één of twee vaste taken, zoals mail en facturen</span></li>
+            <li><span class="tick">✓</span><span>Maandoverzicht van uren en werk</span></li>
+            <li><span class="tick">✓</span><span>Maandelijks opzegbaar</span></li>
+          </ul>
+          <a class="btn ghost plan-cta" href="#contact">Vraag een offerte aan</a>
+        </article>
+        <article class="plan featured">
+          <span class="tag">Plus</span>
+          <div class="price">10 uur <small>per week</small></div>
+          <p class="hours">Ongeveer <strong>40 uur</strong> per maand</p>
+          <ul>
+            <li><span class="tick">✓</span><span>Complete administratieve ondersteuning uit handen</span></li>
+            <li><span class="tick">✓</span><span>Vaste afstemming per week</span></li>
+            <li><span class="tick">✓</span><span>Maandoverzicht van uren en werk</span></li>
+            <li><span class="tick">✓</span><span>Maandelijks opzegbaar</span></li>
+          </ul>
+          <a class="btn ghost plan-cta" href="#contact">Vraag een offerte aan</a>
+        </article>
+        <article class="plan">
+          <span class="tag quiet">Pro</span>
+          <div class="price">20 uur <small>per week</small></div>
+          <p class="hours">Ongeveer <strong>80 uur</strong> per maand</p>
+          <ul>
+            <li><span class="tick">✓</span><span>Voor bedrijven met meerdere vestigingen of een groot team</span></li>
+            <li><span class="tick">✓</span><span>Maandoverzicht van uren en werk</span></li>
+            <li><span class="tick">✓</span><span>Vaste afstemming per week</span></li>
+            <li><span class="tick">✓</span><span>Beperkt beschikbaar, in overleg</span></li>
+          </ul>
+          <a class="btn ghost plan-cta" href="#contact">Vraag een offerte aan</a>
+        </article>
+      </div>
+      <div class="plans-foot">
+        <p><strong>Liever eerst een losse klus?</strong> Dat kan ook, met een minimum van twee uur. Handig bij piekdrukte of een eenmalige opdracht.</p>
+        <a class="btn ghost" href="#contact">Vraag een losse opdracht aan</a>
+      </div>
+      <p class="plans-note">Prijzen ontvangt u in een offerte op maat. Bundels worden maandelijks vooraf gefactureerd, met een opzegtermijn van één maand. Niet gebruikte uren schuiven één maand door; extra uren stemmen wij vooraf met u af.</p>
+    </div>
+  </section>
+
+  <section id="advies" class="band">
+    <div class="wrap advice">
+      <div class="advice-copy">
+        <p class="label">Voor horecaondernemers</p>
+        <h2>Horeca-advies over marge en personeel</h2>
+        <p>Inkoop en personeel zijn samen zestig tot vijfenzestig procent van uw omzet. Eén procent scherper op een van die twee levert vaak meer op dan tien procent meer gasten.</p>
+        <p>Met een audit rekenen wij uw menukaart of uw personeelsinzet door, in uw eigen zaak. U ontvangt een lijst met verbeterpunten, met per punt wat het u per jaar oplevert. Bij de uitvoering begeleiden wij uw team drie maanden. Elk pakket heeft een vaste prijs, die u vooraf in de offerte ziet.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pakket</th><th>Doorlooptijd</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Fundamenteel Sterk</strong><small>Audit op uw brutomarge: menukaart, inkoop en prijzen</small></td><td>6 tot 8 weken</td></tr>
+            <tr><td><strong>Operationeel Scherp</strong><small>Audit op uw personeelskosten: planning, prognose en team</small></td><td>6 tot 8 weken</td></tr>
+            <tr><td><strong>Sterk &amp; Scherp</strong><small>Beide audits, plus de koppeling ertussen</small></td><td>8 tot 10 weken</td></tr>
+            <tr><td><strong>Begeleidingstraject</strong><small>Drie maanden uitvoering, zes werksessies van twee uur</small></td><td>3 maanden</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Werkwijze</p>
+        <h2>Zo verloopt de start</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Kennismaken</h3><p>Wij bespreken welk werk u uit handen wilt geven en welke systemen u gebruikt. Daarna kiest u een bundel.</p></li>
+        <li><h3>Afspraken vastleggen</h3><p>Wij sluiten een overeenkomst en een verwerkersovereenkomst. Toegang regelen wij op de manier die bij uw bedrijf past, bij voorkeur via een eigen account met twee-staps-verificatie.</p></li>
+        <li><h3>Aan de slag</h3><p>Wij plannen het werk zelfstandig in en houden een gedeelde takenlijst bij. Elke week stemmen wij kort af, en op vragen reageren wij binnen één werkdag.</p></li>
+        <li><h3>Maandoverzicht</h3><p>Aan het eind van de maand ontvangt u een overzicht van de bestede uren, het afgeronde werk en opvallende punten.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="over" class="about">
+    <div class="wrap">
+      <figure class="portrait" aria-label="Foto van Mart Nickien volgt">
+        <!-- FOTO: vervang de regel hieronder door: <img src="mart-nickien.jpg" alt="Mart Nickien, oprichter van Esta Support"> -->
+        <span class="portrait-ph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="mark" viewBox="0 0 512 512">
+<rect x="0" y="0" width="512" height="512" rx="112.6" style="fill:var(--accent)"/>
+<path d="M260.82815999999997 331.83744Q230.59967999999998 331.83744 207.08864 318.19264Q183.5776 304.54784 170.56256 279.56736Q157.54752 254.58688 157.54752 220.57984Q157.54752 191.19104000000002 170.56256 165.5808Q183.5776 139.97056 207.29856 124.22656Q231.01952 108.48256 262.50752 108.48256Q280.1408 108.48256 296.51456 113.52064000000001Q312.88832 118.55872000000002 325.90336 130.31424Q338.9184 142.06976 346.68543999999997 161.38240000000002Q354.45248 180.69504 354.03264 208.40448L212.9664 210.92352Q212.9664 236.9536 219.05408 256.89599999999996Q225.14175999999998 276.8384 238.99648 288.384Q252.8512 299.9296 275.52256 299.9296Q285.59871999999996 299.9296 297.14432 296.36096Q308.68992 292.79232 320.02559999999994 285.44512Q331.36127999999997 278.09792 340.17792 267.18208L356.13184 281.87648Q342.27711999999997 302.0288 325.48352 312.94464Q308.68992 323.86048 291.89631999999995 327.84896000000003Q275.10272 331.83744 260.82815999999997 331.83744ZM215.0656 185.73312H302.39232Q301.97248 168.93952000000002 297.56416 157.39392Q293.15584 145.84832 284.75904 139.76064000000002Q276.36224 133.67296000000002 264.18688 133.67296000000002Q243.61471999999998 133.67296000000002 231.22943999999998 147.31776000000002Q218.84416 160.96256 215.0656 185.73312Z" style="fill:var(--mark-fg)"/>
+</svg></span>
+      </figure>
+      <div class="about-copy">
+        <p class="label">Over mij</p>
+        <h2>Mart Nickien</h2>
+        <p>Horecaprofessional met veel leidinggevende ervaring, onder meer als vestigingsmanager. Verantwoordelijk voor roosters, personeelsadministratie, inkoop en leveranciers, offertes en facturen. Daarnaast ervaring aan de facilitaire kant, als facilitair adviseur binnen een professionele facilitaire organisatie: werken met facilitaire systemen en het maken van complexe roosterplanningen. Precies het werk waarmee wij nu andere ondernemers helpen.</p>
+        <p>In elke organisatie hetzelfde beeld: de ondernemer staat op de vloer en het werk eromheen blijft liggen. Wij nemen dat werk over, zodat u weer tijd heeft voor uw gasten, uw klanten en uw team. Enthousiast, energiek, betrouwbaar en leergierig, en snel thuis in elke organisatie.</p>
+        <ul class="traits" aria-label="Eigenschappen van Mart">
+          <li>Enthousiast</li><li>Energiek</li><li>Betrouwbaar</li><li>Leergierig</li><li>Past zich makkelijk aan</li>
+        </ul>
+        <div class="refs">
+          <h3>Referenties</h3>
+          <p>Wij brengen u graag in contact met vorige werkgevers van Mart. Zij bevestigen dat hij binnen hun organisatie een betrouwbare kracht was.</p>
+          <a class="btn ghost on-dark" href="#contact">Vraag referenties aan</a>
+        </div>
+        <figure class="quote"><blockquote>"Ik hoef geen uitleg over hoe een rooster werkt. Ik heb er jarenlang zelf mee gewerkt."</blockquote><figcaption>Mart Nickien, oprichter van Esta Support</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="vragen" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Veelgestelde vragen</p>
+        <h2>Goed om te weten</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Op afstand of op locatie?</summary><p>Vooral op afstand, in uw eigen systemen. Bij de start komen wij graag langs in Zuid-Limburg, en daarna wanneer het nodig is. Eventuele reiskosten staan vooraf in de offerte.</p></details>
+        <details><summary>Wat gebeurt er met mijn gegevens?</summary><p>Voor de start sluiten wij een verwerkersovereenkomst. Uw gegevens blijven zoveel mogelijk in uw eigen systemen. Wij passen ons aan aan uw werkwijze; onze voorkeur gaat uit naar een eigen account met twee-staps-verificatie. Na afloop verwijderen wij alle toegang en kopieën.</p></details>
+        <details><summary>Wat zijn de werktijden?</summary><p>Wij werken met een flexibele planning, overdag en soms in de avond. Uw taken zijn op tijd klaar en op vragen reageren wij binnen één werkdag.</p></details>
+        <details><summary>Is opzeggen altijd mogelijk?</summary><p>Ja. Bundels zijn maandelijks opzegbaar, met een opzegtermijn van één maand.</p></details>
+        <details><summary>En als er een maand meer uren nodig zijn?</summary><p>Extra uren stemmen wij vooraf met u af. Heeft u structureel meer werk, dan stapt u over op een grotere bundel.</p></details>
+        <details><summary>Valt boekhouding of loonadministratie eronder?</summary><p>Nee. Wij zetten alles klaar voor uw boekhouder; aangiftes en loonadministratie blijven bij een specialist.</p></details>
+        <details><summary>Alleen voor de horeca?</summary><p>Nee. De horeca is onze achtergrond, maar wij werken voor elk klein bedrijf dat deze taken herkent.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="contact-copy">
+        <p class="label">Contact</p>
+        <h2>Vrijblijvend kennismaken</h2>
+        <p class="lead">Belt, appt of mailt u ons gerust. In een kort gesprek bespreken wij welk werk wij van u kunnen overnemen en welke bundel past. Daarna ontvangt u een vrijblijvende offerte op maat.</p>
+        <p class="promise"><strong>Reactie binnen één werkdag.</strong> Dankzij een flexibele werkplanning is uw werk op tijd klaar, ook als wij meerdere klanten bedienen. U weet altijd wanneer u antwoord krijgt.</p>
+      </div>
+      <div class="contact-card">
+        <div class="row"><span class="k">Naam</span><span class="v">Mart Nickien</span></div>
+        <div class="row"><span class="k">Telefoon en WhatsApp</span><span class="v"><a href="tel:+31615503544" id="tel">06 15 50 35 44</a><button class="copy" type="button" data-copy="06 15 50 35 44">Kopieer</button></span></div>
+        <div class="row"><span class="k">E-mail</span><span class="v"><a href="mailto:martnickien@estasupport.nl" id="mail">martnickien@estasupport.nl</a><button class="copy" type="button" data-copy="martnickien@estasupport.nl">Kopieer</button></span></div>
+        <div class="row"><span class="k">Werkgebied</span><span class="v">Heerlen en Zuid-Limburg, op afstand in heel Nederland</span></div>
+        <a class="btn primary" href="mailto:martnickien@estasupport.nl?subject=Offerte%20aanvragen%20Esta%20Support">Vraag een offerte aan</a>
+      </div>
+    </div>
+  </section>
+  <section id="privacy" class="privacy">
+    <div class="wrap">
+      <details id="privacy-details">
+        <summary><span class="label">Privacy</span><span class="ptitle">Privacyverklaring Esta Support</span></summary>
+        <div class="pbody">
+          <p class="pmeta">Versie 1.0 · november 2026</p>
+          <h3>Wie zijn wij</h3>
+          <p>Esta Support is een eenmanszaak van Mart Nickien, De Lirp 4, 6419 EW Heerlen, ingeschreven bij de Kamer van Koophandel onder nummer [volgt]. Wij zijn verantwoordelijk voor de verwerking van de persoonsgegevens die in deze verklaring staan. Vragen over privacy kunt u stellen via martnickien@estasupport.nl of 06 15 50 35 44.</p>
+          <h3>Welke gegevens wij verwerken en waarom</h3>
+          <ul>
+            <li><strong>Contact.</strong> Als u ons belt, appt of mailt, gebruiken wij uw naam, bedrijfsnaam, e-mailadres, telefoonnummer en uw bericht om uw vraag te beantwoorden. Grondslag: gerechtvaardigd belang.</li>
+            <li><strong>Offertes en opdrachten.</strong> Voor offertes, overeenkomsten en de uitvoering van een opdracht gebruiken wij de gegevens van uw contactpersonen. Grondslag: het sluiten en uitvoeren van een overeenkomst.</li>
+            <li><strong>Facturen en administratie.</strong> Voor facturen en onze boekhouding verwerken wij naam, bedrijfsnaam, adres, btw-nummer en betaalgegevens. Grondslag: wettelijke verplichting.</li>
+            <li><strong>Referenties.</strong> Uw naam en ervaring plaatsen wij alleen op onze website of LinkedIn als u daarvoor toestemming geeft. Die toestemming kunt u altijd intrekken.</li>
+          </ul>
+          <h3>Gegevens van onze opdrachtgevers</h3>
+          <p>Bij het uitvoeren van een opdracht werken wij in de systemen van onze opdrachtgevers, bijvoorbeeld met gegevens van hun medewerkers of klanten. Daarbij zijn wij verwerker en is de opdrachtgever verantwoordelijk. Hoe wij daarmee omgaan, leggen wij per opdrachtgever vast in een verwerkersovereenkomst.</p>
+          <h3>Hoe lang wij gegevens bewaren</h3>
+          <ul>
+            <li>Contactgegevens van mensen die geen opdrachtgever worden: tot twee jaar na het laatste contact.</li>
+            <li>Facturen en administratie: zeven jaar, zoals de wet voorschrijft.</li>
+            <li>Referenties: tot u uw toestemming intrekt.</li>
+          </ul>
+          <h3>Met wie wij gegevens delen</h3>
+          <p>Wij verkopen uw gegevens nooit. Wij delen ze alleen als dat nodig is, met partijen die voor ons werken en met wie wij afspraken over beveiliging hebben, zoals onze leveranciers van e-mail en opslag (Microsoft), boekhoudsoftware (Moneybird), webhosting (TransIP) en digitaal ondertekenen, en met onze boekhouder. Daarnaast verstrekken wij gegevens als de wet dat verplicht, bijvoorbeeld aan de Belastingdienst.</p>
+          <h3>Cookies en deze website</h3>
+          <p>Deze website gebruikt geen cookies en geen programma's om bezoekers te volgen. Wij houden geen bezoekersstatistieken bij.</p>
+          <h3>Beveiliging</h3>
+          <p>Wij beveiligen gegevens onder meer met versleutelde apparatuur, een wachtwoordbeheerder en twee-staps-verificatie op al onze accounts.</p>
+          <h3>Uw rechten</h3>
+          <p>U kunt ons vragen om uw gegevens in te zien, te corrigeren, te verwijderen of over te dragen, of bezwaar maken tegen het gebruik ervan. Stuur daarvoor een e-mail naar martnickien@estasupport.nl. Wij reageren binnen vier weken. Bent u niet tevreden over hoe wij met uw gegevens omgaan, dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<nav class="dock" aria-label="Snelmenu">
+  <ul>
+    <li><a href="#diensten" data-spy="diensten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Diensten</span></a></li>
+    <li><a href="#bundels" data-spy="bundels"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg><span>Bundels</span></a></li>
+    <li><a href="#advies" data-spy="advies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M7 16V10M12 16V6M17 16v-4"/></svg><span>Advies</span></a></li>
+    <li><a href="#werkwijze" data-spy="werkwijze"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Werkwijze</span></a></li>
+    <li><a href="#over" data-spy="over"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg><span>Over mij</span></a></li>
+  </ul>
+</nav>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Esta Support · Mart Nickien · Heerlen</span>
+    <span>KvK en btw-nummer volgen na inschrijving · <a href="#privacy" class="plink">Privacyverklaring</a></span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.getAttribute('data-copy');
+    var done = function () { var o = b.textContent; b.textContent = 'Gekopieerd'; setTimeout(function () { b.textContent = o; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); var el = b.previousElementSibling; r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Geselecteerd';
+      setTimeout(function () { b.textContent = 'Kopieer'; }, 1600);
+    };
+    try { navigator.clipboard.writeText(t).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
+  var ids = ['diensten','bundels','advies','werkwijze','over'];
+  var secs = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  function update() {
+    var y = window.scrollY + window.innerHeight * 0.35, cur = '';
+    secs.forEach(function (s) { if (s.offsetTop <= y) cur = s.id; });
+    var c = document.getElementById('contact');
+    if (c && c.offsetTop <= y) cur = '';
+    links.forEach(function (a) { if (a.getAttribute('data-spy') === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+(function () {
+  function openPrivacy() { if (location.hash === '#privacy') { var d = document.getElementById('privacy-details'); if (d) d.open = true; } }
+  window.addEventListener('hashchange', openPrivacy); openPrivacy();
+  document.querySelectorAll('a[href="#privacy"]').forEach(function (a) { a.addEventListener('click', function () { var d = document.getElementById('privacy-details'); if (d) d.open = true; }); });
+})();
+</script>
+
+</body>
+</html>
