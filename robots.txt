@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /mail/
 
 Sitemap: https://estasupport.nl/sitemap.xml
-Disallow: /mail/
