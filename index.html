@@ -83,6 +83,12 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .facts span::before { content: "•"; color: var(--accent); margin-right: 8px; }
 .hero-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 16px; min-width: 0; }
 .hero-card .mark { width: 56px; height: 56px; }
+.hero-photo { margin: -10px -10px 4px; border-radius: 12px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--line); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+.person { display: flex; align-items: center; gap: 16px; }
+.person img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+.person div { display: grid; gap: 2px; }
+.person span { font-size: .9rem; opacity: .75; }
 .hero-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .hero-card li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: .95rem; }
 .tick { color: var(--sage); font-weight: 600; }
@@ -106,7 +112,8 @@ section { padding-block: clamp(56px, 8vw, 96px); }
   .services { grid-template-columns: 1fr; }
   .service, .service:nth-child(even) { padding: 20px 0; border-right: none !important; }
 }
-.for-who { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+.for-who { margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+@media (max-width: 960px) { .for-who { grid-template-columns: 1fr 1fr; } }
 .for-who > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; display: grid; gap: 6px; }
 .for-who p { color: var(--muted); font-size: .95rem; }
 @media (max-width: 700px) { .for-who { grid-template-columns: 1fr; } }
@@ -126,7 +133,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .plan { grid-template-rows: auto auto auto 1fr auto !important; }
 .plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: .93rem; align-content: start; }
 .plan li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
-.plans-foot { margin-top: 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: center; background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 20px 24px; }
+.plans-foot { margin-top: 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: center; background: var(--surface); border: 1px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; }
 .plans-foot p { color: var(--muted); font-size: .95rem; }
 .plans-note { margin-top: 14px; font-size: .85rem; color: var(--muted); }
 @media (max-width: 900px) { .plans { grid-template-columns: 1fr; } .plans-foot { grid-template-columns: 1fr; } }
@@ -255,7 +262,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <ul>
         <li><a href="#diensten" data-spy="diensten">Diensten</a></li>
         <li><a href="#bundels" data-spy="bundels">Bundels</a></li>
-        <li><a href="#advies" data-spy="advies">Horeca-advies</a></li>
+        <li><a href="horeca.html">Horeca-advies</a></li>
         <li><a href="#werkwijze" data-spy="werkwijze">Werkwijze</a></li>
         <li><a href="#over" data-spy="over">Over mij</a></li>
       </ul>
@@ -269,20 +276,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="label">Administratieve ondersteuning voor ondernemers <span style="white-space:nowrap">· Zuid-Limburg</span></p>
+        <p class="label">Administratieve ondersteuning voor ondernemers en organisaties <span style="white-space:nowrap">· Zuid-Limburg</span></p>
         <h1>U runt uw zaak. <em>Wij regelen de rest.</em></h1>
-        <p class="lead">Wij nemen het werk naast uw vak uit handen: mail, roosters, offertes en facturen, personeelsadministratie en social media. Op afstand, per maand, met één vast aanspreekpunt dat weet hoe een bedrijf met personeel in de praktijk draait.</p>
+        <p class="lead">Wij nemen het werk naast uw vak uit handen: mail, roosters, offertes en facturen, personeelsadministratie en social media. Op locatie in Zuid-Limburg of op afstand, met één vast aanspreekpunt dat weet hoe een bedrijf met personeel in de praktijk draait. Voor vaste ondersteuning of om tijdelijk bij te springen.</p>
         <div class="actions">
           <a class="btn primary" href="#contact">Plan een kennismaking</a>
-          <a class="btn ghost" href="#bundels">Bekijk de bundels</a>
+          <a class="btn ghost" href="#bundels">Bekijk de mogelijkheden</a>
         </div>
-        <div class="facts"><span>Betrouwbare assistent met ervaring in verschillende sectoren</span><span>Vanaf 5 uur per week</span><span>Maandelijks opzegbaar</span></div>
+        <div class="facts"><span>Betrouwbare kracht met ervaring in horeca en facilitair</span><span>Vaste bundel of tijdelijk bijspringen</span><span>Maandelijks opzegbaar</span></div>
       </div>
       <aside class="hero-card" aria-label="Wat wij bieden">
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="mark" viewBox="0 0 512 512">
-<rect x="0" y="0" width="512" height="512" rx="112.6" style="fill:var(--accent)"/>
-<path d="M260.82815999999997 331.83744Q230.59967999999998 331.83744 207.08864 318.19264Q183.5776 304.54784 170.56256 279.56736Q157.54752 254.58688 157.54752 220.57984Q157.54752 191.19104000000002 170.56256 165.5808Q183.5776 139.97056 207.29856 124.22656Q231.01952 108.48256 262.50752 108.48256Q280.1408 108.48256 296.51456 113.52064000000001Q312.88832 118.55872000000002 325.90336 130.31424Q338.9184 142.06976 346.68543999999997 161.38240000000002Q354.45248 180.69504 354.03264 208.40448L212.9664 210.92352Q212.9664 236.9536 219.05408 256.89599999999996Q225.14175999999998 276.8384 238.99648 288.384Q252.8512 299.9296 275.52256 299.9296Q285.59871999999996 299.9296 297.14432 296.36096Q308.68992 292.79232 320.02559999999994 285.44512Q331.36127999999997 278.09792 340.17792 267.18208L356.13184 281.87648Q342.27711999999997 302.0288 325.48352 312.94464Q308.68992 323.86048 291.89631999999995 327.84896000000003Q275.10272 331.83744 260.82815999999997 331.83744ZM215.0656 185.73312H302.39232Q301.97248 168.93952000000002 297.56416 157.39392Q293.15584 145.84832 284.75904 139.76064000000002Q276.36224 133.67296000000002 264.18688 133.67296000000002Q243.61471999999998 133.67296000000002 231.22943999999998 147.31776000000002Q218.84416 160.96256 215.0656 185.73312Z" style="fill:var(--mark-fg)"/>
-</svg>
+        <figure class="hero-photo"><img src="mart-onderweg.jpg" alt="Mart Nickien van Esta Support" width="900" height="675" fetchpriority="high" decoding="async"></figure>
         <h3>Wat wij bieden</h3>
         <ul>
           <li><span class="tick">✓</span><span>Eén vast aanspreekpunt, geen wisselend team</span></li>
@@ -299,7 +303,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="section-head">
         <p class="label">Diensten</p>
         <h2>Het werk dat blijft liggen, pakken wij op</h2>
-        <p class="lead">U staat zelf op de vloer, bij de klant of in de werkplaats. Ondertussen loopt de administratie op. Deze taken nemen wij van u over.</p>
+        <p class="lead">U staat zelf op de vloer, bij de klant of in de werkplaats. Ondertussen loopt de administratie op. Deze taken nemen wij van u over. Werkt u al met AI of slimme software? Dan zorgen wij dat het voorbereide werk ook gecontroleerd, verstuurd en opgevolgd wordt.</p>
       </div>
       <div class="services">
         <div class="service">
@@ -324,23 +328,27 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
         <div class="service">
           <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17" cy="7" r=".6"/></svg>
-          <h3>Social media beheer</h3>
-          <p>Berichten plannen en plaatsen, reacties en reviews beantwoorden, en uw kanalen actueel houden.</p>
+          <h3>Social media en content</h3>
+          <p>Berichten maken, plannen en plaatsen, reacties en reviews beantwoorden, en teksten en eenvoudige beelden in uw eigen huisstijl.</p>
         </div>
         <div class="service">
-          <svg viewBox="0 0 24 24"><path d="M4 20l4-1 10.5-10.5a2.1 2.1 0 00-3-3L5 16z"/><path d="M13.5 7.5l3 3"/></svg>
-          <h3>Content maken</h3>
-          <p>Teksten en eenvoudige beelden voor social media, nieuwsbrieven, menukaarten of vacatures, in uw eigen huisstijl.</p>
+          <svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h7M4 18h10"/><circle cx="18" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+          <h3>Planning en coördinatie</h3>
+          <p>Leveranciers en externe partijen afstemmen, planningen bewaken, audits voorbereiden en werkinstructies vastleggen, zodat processen blijven lopen.</p>
         </div>
       </div>
       <div class="for-who">
         <div>
           <h3>Horeca</h3>
-          <p>Hier ligt onze basis. Roosters, inkoop, personeel en gasten: u hoeft ons niets uit te leggen.</p>
+          <p>Hier ligt onze basis. Roosters, inkoop, personeel en gasten: u hoeft ons niets uit te leggen. Zoekt u advies over marge en personeelskosten? <a class="plink" href="horeca.html">Bekijk horeca-advies</a></p>
         </div>
         <div>
           <h3>Kleine bedrijven en zzp'ers</h3>
           <p>Ook buiten de horeca ondersteunen wij ondernemers met personeel, klanten en administratie, in Zuid-Limburg en daarbuiten.</p>
+        </div>
+        <div>
+          <h3>Organisaties met een facilitaire afdeling</h3>
+          <p>Vanuit onze facilitaire ervaring ondersteunen wij ook grotere organisaties: bij piekdrukte, in projecten of tijdens een openstaande vacature.</p>
         </div>
       </div>
     </div>
@@ -349,9 +357,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="bundels">
     <div class="wrap">
       <div class="section-head">
-        <p class="label">Bundels</p>
-        <h2>Kies het aantal uren dat bij u past</h2>
-        <p class="lead">U kiest een vast aantal uren per week. Wij verdelen die uren over de maand, zodat het werk doorloopt, en elke maand ontvangt u een overzicht van het uitgevoerde werk. Na een kort kennismakingsgesprek ontvangt u een offerte op maat.</p>
+        <p class="label">Bundels en tijdelijke inzet</p>
+        <h2>Vast of tijdelijk, u kiest wat past</h2>
+        <p class="lead">Voor doorlopende ondersteuning kiest u een vast aantal uren per week. Wij verdelen die uren over de maand, zodat het werk doorloopt, en elke maand ontvangt u een overzicht van het uitgevoerde werk. Na een kort kennismakingsgesprek ontvangt u een offerte op maat.</p>
       </div>
       <div class="plans">
         <article class="plan">
@@ -391,32 +399,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </article>
       </div>
       <div class="plans-foot">
-        <p><strong>Liever eerst een losse klus?</strong> Dat kan ook, met een minimum van twee uur. Handig bij piekdrukte of een eenmalige opdracht.</p>
-        <a class="btn ghost" href="#contact">Vraag een losse opdracht aan</a>
+        <p><strong>Tijdelijk bijspringen.</strong> Bij piekdrukte, ziekte, verlof of een openstaande vacature nemen wij tijdelijk werk over, voor een afgesproken aantal uren of een vaste periode. Ook een losse klus kan, met een minimum van twee uur.</p>
+        <a class="btn ghost" href="#contact">Vraag tijdelijke ondersteuning aan</a>
       </div>
       <p class="plans-note">Prijzen ontvangt u in een offerte op maat. Bundels worden maandelijks vooraf gefactureerd, met een opzegtermijn van één maand. Niet gebruikte uren schuiven één maand door; extra uren stemmen wij vooraf met u af.</p>
-    </div>
-  </section>
-
-  <section id="advies" class="band">
-    <div class="wrap advice">
-      <div class="advice-copy">
-        <p class="label">Voor horecaondernemers</p>
-        <h2>Horeca-advies over marge en personeel</h2>
-        <p>Inkoop en personeel zijn samen zestig tot vijfenzestig procent van uw omzet. Eén procent scherper op een van die twee levert vaak meer op dan tien procent meer gasten.</p>
-        <p>Met een audit rekenen wij uw menukaart of uw personeelsinzet door, in uw eigen zaak. U ontvangt een lijst met verbeterpunten, met per punt wat het u per jaar oplevert. Bij de uitvoering begeleiden wij uw team drie maanden. Elk pakket heeft een vaste prijs, die u vooraf in de offerte ziet.</p>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Pakket</th><th>Doorlooptijd</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Fundamenteel Sterk</strong><small>Audit op uw brutomarge: menukaart, inkoop en prijzen</small></td><td>6 tot 8 weken</td></tr>
-            <tr><td><strong>Operationeel Scherp</strong><small>Audit op uw personeelskosten: planning, prognose en team</small></td><td>6 tot 8 weken</td></tr>
-            <tr><td><strong>Sterk &amp; Scherp</strong><small>Beide audits, plus de koppeling ertussen</small></td><td>8 tot 10 weken</td></tr>
-            <tr><td><strong>Begeleidingstraject</strong><small>Drie maanden uitvoering, zes werksessies van twee uur</small></td><td>3 maanden</td></tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </section>
 
@@ -427,7 +413,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <h2>Zo verloopt de start</h2>
       </div>
       <ol class="steps">
-        <li><h3>Kennismaken</h3><p>Wij bespreken welk werk u uit handen wilt geven en welke systemen u gebruikt. Daarna kiest u een bundel.</p></li>
+        <li><h3>Kennismaken</h3><p>Wij bespreken welk werk u uit handen wilt geven en welke systemen u gebruikt. Daarna kiest u een vaste bundel of tijdelijke inzet.</p></li>
         <li><h3>Afspraken vastleggen</h3><p>Wij sluiten een overeenkomst en een verwerkersovereenkomst. Toegang regelen wij op de manier die bij uw bedrijf past, bij voorkeur via een eigen account met twee-staps-verificatie.</p></li>
         <li><h3>Aan de slag</h3><p>Wij plannen het werk zelfstandig in en houden een gedeelde takenlijst bij. Elke week stemmen wij kort af, en op vragen reageren wij binnen één werkdag.</p></li>
         <li><h3>Maandoverzicht</h3><p>Aan het eind van de maand ontvangt u een overzicht van de bestede uren, het afgeronde werk en opvallende punten.</p></li>
@@ -443,7 +429,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="about-copy">
         <p class="label">Over mij</p>
         <h2>Mart Nickien</h2>
-        <p>Horecaprofessional met veel leidinggevende ervaring, onder meer als vestigingsmanager. Verantwoordelijk voor roosters, personeelsadministratie, inkoop en leveranciers, offertes en facturen. Daarnaast ervaring aan de facilitaire kant, als facilitair adviseur binnen een professionele facilitaire organisatie: werken met facilitaire systemen en het maken van complexe roosterplanningen. Precies het werk waarmee wij nu andere ondernemers helpen.</p>
+        <p>Ruim twintig jaar ervaring in de horeca, waarvan de laatste acht jaar als manager, onder meer als vestigingsmanager. Verantwoordelijk voor roosters, personeelsadministratie, inkoop en leveranciers, offertes en facturen. Daarnaast ervaring aan de facilitaire kant, als facilitair adviseur binnen een professionele facilitaire organisatie: werken met facilitaire systemen en het maken van complexe roosterplanningen. Precies het werk waarmee wij nu andere ondernemers helpen.</p>
         <p>In elke organisatie hetzelfde beeld: de ondernemer staat op de vloer en het werk eromheen blijft liggen. Wij nemen dat werk over, zodat u weer tijd heeft voor uw gasten, uw klanten en uw team. Enthousiast, energiek, betrouwbaar en leergierig, en snel thuis in elke organisatie.</p>
         <ul class="traits" aria-label="Eigenschappen van Mart">
           <li>Enthousiast</li><li>Energiek</li><li>Betrouwbaar</li><li>Leergierig</li><li>Past zich makkelijk aan</li>
@@ -465,13 +451,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <h2>Goed om te weten</h2>
       </div>
       <div class="faq">
-        <details><summary>Op afstand of op locatie?</summary><p>Vooral op afstand, in uw eigen systemen. Bij de start komen wij graag langs in Zuid-Limburg, en daarna wanneer het nodig is. Eventuele reiskosten staan vooraf in de offerte.</p></details>
+        <details><summary>Op afstand of op locatie?</summary><p>Allebei. In Zuid-Limburg werken wij graag op locatie: bij de start, voor overleg of als het werk dat vraagt. Daarnaast werken wij op afstand in uw eigen systemen. Eventuele reiskosten staan vooraf in de offerte.</p></details>
         <details><summary>Wat gebeurt er met mijn gegevens?</summary><p>Voor de start sluiten wij een verwerkersovereenkomst. Uw gegevens blijven zoveel mogelijk in uw eigen systemen. Wij passen ons aan aan uw werkwijze; onze voorkeur gaat uit naar een eigen account met twee-staps-verificatie. Na afloop verwijderen wij alle toegang en kopieën.</p></details>
         <details><summary>Wat zijn de werktijden?</summary><p>Wij werken met een flexibele planning, overdag en soms in de avond. Uw taken zijn op tijd klaar en op vragen reageren wij binnen één werkdag.</p></details>
+        <details><summary>Kunt u ook tijdelijk bijspringen?</summary><p>Ja. Bij piekdrukte, ziekte, verlof of een openstaande vacature nemen wij tijdelijk werk over, voor een afgesproken aantal uren of een vaste periode. U ontvangt vooraf een offerte op maat.</p></details>
         <details><summary>Is opzeggen altijd mogelijk?</summary><p>Ja. Bundels zijn maandelijks opzegbaar, met een opzegtermijn van één maand.</p></details>
         <details><summary>En als er een maand meer uren nodig zijn?</summary><p>Extra uren stemmen wij vooraf met u af. Heeft u structureel meer werk, dan stapt u over op een grotere bundel.</p></details>
         <details><summary>Valt boekhouding of loonadministratie eronder?</summary><p>Nee. Wij zetten alles klaar voor uw boekhouder; aangiftes en loonadministratie blijven bij een specialist.</p></details>
-        <details><summary>Alleen voor de horeca?</summary><p>Nee. De horeca is onze achtergrond, maar wij werken voor elk klein bedrijf dat deze taken herkent.</p></details>
+        <details><summary>Alleen voor de horeca?</summary><p>Nee. De horeca is onze achtergrond en daarnaast hebben wij facilitaire ervaring. Wij werken voor ondernemers en organisaties die deze taken herkennen.</p></details>
       </div>
     </div>
   </section>
@@ -481,11 +468,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="contact-copy">
         <p class="label">Contact</p>
         <h2>Vrijblijvend kennismaken</h2>
-        <p class="lead">Belt, appt of mailt u ons gerust. In een kort gesprek bespreken wij welk werk wij van u kunnen overnemen en welke bundel past. Daarna ontvangt u een vrijblijvende offerte op maat.</p>
+        <p class="lead">Belt, appt of mailt u ons gerust. In een kort gesprek bespreken wij welk werk wij van u kunnen overnemen en welke vorm past. Daarna ontvangt u een vrijblijvende offerte op maat.</p>
         <p class="promise"><strong>Reactie binnen één werkdag.</strong> Dankzij een flexibele werkplanning is uw werk op tijd klaar, ook als wij meerdere klanten bedienen. U weet altijd wanneer u antwoord krijgt.</p>
       </div>
       <div class="contact-card">
-        <div class="row"><span class="k">Naam</span><span class="v">Mart Nickien</span></div>
+        <div class="person"><img src="mart-avatar.jpg" alt="" width="72" height="72" loading="lazy" decoding="async"><div><strong>Mart Nickien</strong><span>Uw vaste aanspreekpunt</span></div></div>
         <div class="row"><span class="k">Telefoon en WhatsApp</span><span class="v"><a href="tel:+31645514779" id="tel">06 45 51 47 79</a><button class="copy" type="button" data-copy="06 45 51 47 79">Kopieer</button></span></div>
         <div class="row"><span class="k">E-mail</span><span class="v"><a href="mailto:martnickien@estasupport.nl" id="mail">martnickien@estasupport.nl</a><button class="copy" type="button" data-copy="martnickien@estasupport.nl">Kopieer</button></span></div>
         <div class="row"><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/estasupport.nl/" target="_blank" rel="noopener">@estasupport.nl</a></span></div>
@@ -535,7 +522,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <ul>
     <li><a href="#diensten" data-spy="diensten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Diensten</span></a></li>
     <li><a href="#bundels" data-spy="bundels"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg><span>Bundels</span></a></li>
-    <li><a href="#advies" data-spy="advies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M7 16V10M12 16V6M17 16v-4"/></svg><span>Advies</span></a></li>
+    <li><a href="horeca.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M7 16V10M12 16V6M17 16v-4"/></svg><span>Advies</span></a></li>
     <li><a href="#werkwijze" data-spy="werkwijze"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Werkwijze</span></a></li>
     <li><a href="#over" data-spy="over"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg><span>Over mij</span></a></li>
   </ul>
@@ -562,7 +549,7 @@ document.querySelectorAll('.copy').forEach(function (b) {
 });
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
-  var ids = ['diensten','bundels','advies','werkwijze','over'];
+  var ids = ['diensten','bundels','werkwijze','over'];
   var secs = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
   function update() {
     var y = window.scrollY + window.innerHeight * 0.35, cur = '';
